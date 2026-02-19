@@ -13,12 +13,13 @@ erDiagram
         string judul_buku
         string penulis
         string penerbit
+        datetime tgl_pinjam
+        datetime tgl_pengembalian
         int id_kategori fk
         int id_rak fk
         int id_peminjam fk
         int id_petugas fk
-        datetime tgl_pinjam
-        datetime tgl_pengembalian
+        
     }
     kategori{
         int id_kategori pk
