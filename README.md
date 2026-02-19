@@ -37,6 +37,6 @@ erDiagram
     }
     rak_buku{
         int id_rak pk
-        string lokasi_rak
+        string nama_rak
     }
     
