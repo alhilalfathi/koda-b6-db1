@@ -3,40 +3,53 @@ title: Sistem Perpustakaan
 ---
 ```mermaid
 erDiagram
-    peminjam ||--o{ buku : Meminjam
+    peminjam ||--o{ peminjaman : Meminjam
     buku }o--|| rak_buku : Menyimpan
     kategori ||--o{ buku : Memiliki
-    petugas ||--o{ buku : Mengelola
+    petugas ||--o{ peminjaman : Mengelola
+    penerbit ||--o{ buku : Memiliki
+    penulis ||--o{ buku : Memiliki
+    peminjaman ||--o| buku : memiliki
 
     buku{
-        int id_buku pk
+        int id pk
         string judul_buku
-        string penulis
-        string penerbit
-        datetime tgl_pinjam
-        datetime tgl_pengembalian
+        int id_penulis fk
+        int id_penerbit fk
         int id_kategori fk
         int id_rak fk
-        int id_peminjam fk
-        int id_petugas fk
-        
+    }
+    penerbit{
+        int id pk
+        string nama_penerbit 
+    }
+    penulis{
+        int id pk
+        string firstname
+        string lastname
     }
     kategori{
-        int id_kategori pk
+        int id pk
         string nama_kategori
     }
     peminjam{
-        int id_peminjam pk
+        int id pk
         string nama
         string alamat
-        int id_buku fk
     }
     petugas{
-        int id_petugas pk
+        int id pk
         string nama
     }
     rak_buku{
-        int id_rak pk
+        int id pk
         string nama_rak
     }
-    
+    peminjaman{
+        int id pk
+        int id_buku fk
+        int id_peminjam fk
+        int id_petugas fk
+        datetime tgl_pinjam
+        datetime tgl_pengembalian
+    }
